@@ -1,0 +1,44 @@
+<!doctype html>
+	<head>
+		
+		
+		<title>JavaScript QR Code Generator</title>
+	</head>
+	<body>
+		<h3>QR Code Generator</h3>
+        <div><input id="qr-text" type="text" placeholder="Text to generate QR code"/></div>
+        <br/>
+        <div>
+            <button class="qr-btn" onclick="generateQRCode()">Create QR Code</button>
+        </div>
+        <br/>
+        <p id="qr-result">This is deault QR code:</p>
+        <canvas id="qr-code"></canvas>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+		<script>
+			/* JS comes here */
+			var qr;
+			(function() {
+                    qr = new QRious({
+                    element: document.getElementById('qr-code'),
+                    size: 200,
+                    value: 'This Is Lef_Lef ®'
+                });
+            })();
+            
+            function generateQRCode() {
+                var qrdata=document.getElementById("Name").value +' '+document.getElementById("eventname").value+' '+document.getElementById("buttondropdown").value;
+                var qrtext = document.getElementById("qrdata");
+                document.getElementById("qr-result").innerHTML = "QR code for " + qrtext +":";
+                alert(qrtext);
+                qr.set({
+                    foreground: 'black',
+                    size: 200,
+                    value: qrtext
+                });
+            }
+		</script>
+        
+	</body>
+</html>
